@@ -2,4 +2,4 @@
 Artificial Intelligence Lab Codes
 
 * Uninformed Search
-  ** 8 Queens problem
+1. 8 Queens problem & n-Queens problem
