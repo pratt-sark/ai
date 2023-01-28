@@ -1,4 +1,5 @@
 # ai
 Artificial Intelligence Lab Codes
 
-1. 8 Queens problem
+* Uninformed Search
+  ** 8 Queens problem
