@@ -7,7 +7,7 @@ No specific inputs required except the obvious ones communicated using input pro
 #### Uninformed Search
 
 <details>
-  <summary> <u>8 Queens problem & n-Queens problem</u> </summary>
+  <summary> <ins>8 Queens problem & n-Queens problem</ins> </summary>
   
   The goal of the n-queens problem is to place n queens on a chessboard such that no queen attacks any other. 
   The problem formulation in terms of the state-space is as follows:
