@@ -6,3 +6,20 @@ No specific inputs required except the obvious ones communicated using input pro
 
 #### Uninformed Search
 - 8 Queens problem & n-Queens problem
+
+<details>
+  <summary>Click me</summary>
+  
+  ### Heading
+  1. Foo
+  2. Bar
+     * Baz
+     * Qux
+
+  ### Some Code
+  ```js
+  function logSomething(something) {
+    console.log('Something', something);
+  }
+  ```
+</details>
