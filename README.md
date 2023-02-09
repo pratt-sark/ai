@@ -7,7 +7,7 @@ No specific inputs required except the obvious ones communicated using input pro
 #### Uninformed Search
 
 <details>
-  <summary>### 8 Queens problem & n-Queens problem</summary>
+  <summary> 8 Queens problem & n-Queens problem</summary>
   
   The goal of the n-queens problem is to place n queens on a chessboard such that no queen attacks any other. 
   The problem formulation in terms of the state-space is as follows:
@@ -26,19 +26,20 @@ No specific inputs required except the obvious ones communicated using input pro
 </details>
 
 <details>
-    <summary>### 15-puzzle problem</summary>
+    <summary>15-puzzle problem</summary>
    As an input, you will be given an initial and a
   goal board configuration and your task is to find a sequence of moves that takes the initial board
   configuration to the goal board configuration. 
+  
     The problem formulation in terms of the state-space
   is as follows:
 
-  1. States: Any arrangement of numbers 1-15 on the board together with a blank cell is a state.
-  2. Initial State: A random placement of numbers 1-15 and the blank in the 16 cells of the board.
-  3. Actions: up,down,left,right. The respective action swaps the number to the up,down,left,right
+  * States: Any arrangement of numbers 1-15 on the board together with a blank cell is a state.
+  * Initial State: A random placement of numbers 1-15 and the blank in the 16 cells of the board.
+  * Actions: up,down,left,right. The respective action swaps the number to the up,down,left,right
   of the blank cell with the blank cell.
-  4. Transition Model: Returns the new board after an application of the action.
-  5. Goal test: Whether the current state matches with the goal configuration.
+  * Transition Model: Returns the new board after an application of the action.
+  * Goal test: Whether the current state matches with the goal configuration.
 
   Implement the graph search algorithm to print a path from the initial state leading to the goal
   state along with the corresponding action sequence (initial-board – up – next-board – down – next
