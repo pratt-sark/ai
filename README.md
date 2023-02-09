@@ -26,7 +26,7 @@ No specific inputs required except the obvious ones communicated using input pro
 </details>
 
 <details>
-  <summary> <u>15-puzzle problem & n-puzzle problem</u> </summary>
+  <summary> <ins>15-puzzle problem & n-puzzle problem</ins> </summary>
   
    As an input, you will be given an initial and a goal board configuration and your task is to find a sequence of moves that takes the initial board
   configuration to the goal board configuration. 
