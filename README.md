@@ -27,12 +27,11 @@ No specific inputs required except the obvious ones communicated using input pro
 
 <details>
     <summary>15-puzzle problem</summary>
-   As an input, you will be given an initial and a
-  goal board configuration and your task is to find a sequence of moves that takes the initial board
+  
+   As an input, you will be given an initial and a goal board configuration and your task is to find a sequence of moves that takes the initial board
   configuration to the goal board configuration. 
   
-    The problem formulation in terms of the state-space
-  is as follows:
+  The problem formulation in terms of the state-space is as follows:
 
   * States: Any arrangement of numbers 1-15 on the board together with a blank cell is a state.
   * Initial State: A random placement of numbers 1-15 and the blank in the 16 cells of the board.
