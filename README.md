@@ -7,7 +7,7 @@ No specific inputs required except the obvious ones communicated using input pro
 #### Uninformed Search
 
 <details>
-  <summary> <b>8 Queens problem & n-Queens problem</b> </summary>
+  <summary> <u>8 Queens problem & n-Queens problem</u> </summary>
   
   The goal of the n-queens problem is to place n queens on a chessboard such that no queen attacks any other. 
   The problem formulation in terms of the state-space is as follows:
@@ -26,7 +26,7 @@ No specific inputs required except the obvious ones communicated using input pro
 </details>
 
 <details>
-  <summary> <b>15-puzzle problem & n-puzzle problem</b> </summary>
+  <summary> <u>15-puzzle problem & n-puzzle problem</u> </summary>
   
    As an input, you will be given an initial and a goal board configuration and your task is to find a sequence of moves that takes the initial board
   configuration to the goal board configuration. 
