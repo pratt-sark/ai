@@ -48,9 +48,9 @@ class WumpusWorldAgent(inference.KnowledgeBasedAgent):
     safe_set = set([])
     for i in range(1, self.size + 1):
       for j in range(1, self.size + 1):
-        if logic.resolution(self.KB, logic.expr('L%d_%d' % (i,j))):
+        if inference.resolution(self.KB, logic.expr('L%d_%d' % (i,j))):
           safe_set.add((i,j))
-        if logic.resolution(self.KB, logic.expr('~W%d_%d' % (i,j))) and logic.resolution(self.KB, logic.expr('~P%d_%d' % (i,j))):
+        if inference.resolution(self.KB, logic.expr('~W%d_%d' % (i,j))) and inference.resolution(self.KB, logic.expr('~P%d_%d' % (i,j))):
           safe_set.add((i,j))
         no_smell = inference.resolution(self.KB, logic.expr('~S%d_%d' % (i,j)))
         no_breeze = inference.resolution(self.KB, logic.expr('~B%d_%d' % (i,j)))
