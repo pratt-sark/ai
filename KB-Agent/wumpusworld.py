@@ -69,8 +69,11 @@ class WumpusWorldAgent(inference.KnowledgeBasedAgent):
     ## Implement this method.
     ## AI Lab assignment 3.2
     not_unsafe_set = set([])
-    
-    print()
+    for i in range(1, self.size + 1):
+      for j in range(1, self.size + 1):
+        if logic.resolution(self.KB, logic.expr('~W%d_%d' % (i,j))) and logic.resolution(self.KB, logic.expr('~P%d_%d' % (i,j))):
+          not_unsafe_set.add((i,j))
+    return not_unsafe_set
 
   """
   Create a set of unvisited spaces, and, using two for loops, go through every space.
