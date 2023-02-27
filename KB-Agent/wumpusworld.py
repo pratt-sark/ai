@@ -45,6 +45,19 @@ class WumpusWorldAgent(inference.KnowledgeBasedAgent):
   def safe(self):
     ## Implement this method.
     ## AI Lab assignment 3.2
+    safe_set = set([])
+    for i in range(1, self.size + 1):
+      for j in range(1, self.size + 1):
+        if logic.resolution(self.KB, logic.expr('L%d_%d' % (i,j))):
+          safe_set.add((i,j))
+        if logic.resolution(self.KB, logic.expr('~W%d_%d' % (i,j))) and logic.resolution(self.KB, logic.expr('~P%d_%d' % (i,j))):
+          safe_set.add((i,j))
+        no_smell = inference.resolution(self.KB, logic.expr('~S%d_%d' % (i,j)))
+        no_breeze = inference.resolution(self.KB, logic.expr('~B%d_%d' % (i,j)))
+        if no_smell and no_breeze:
+          for neighbor in get_neighbors(i, j, self.size):
+            if neighbor not in safe_set:
+              safe_set.add(neighbor)
     return safe_set
 
   """
@@ -55,7 +68,12 @@ class WumpusWorldAgent(inference.KnowledgeBasedAgent):
   def not_unsafe(self):
     ## Implement this method.
     ## AI Lab assignment 3.2
-    print()
+    not_unsafe_set = set([])
+    for i in range(1, self.size + 1):
+      for j in range(1, self.size + 1):
+        if logic.resolution(self.KB, logic.expr('~W%d_%d' % (i,j))) and logic.resolution(self.KB, logic.expr('~P%d_%d' % (i,j))):
+          not_unsafe_set.add((i,j))
+    return not_unsafe_set
 
   """
   Create a set of unvisited spaces, and, using two for loops, go through every space.
