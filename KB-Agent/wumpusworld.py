@@ -149,8 +149,10 @@ def play(world):
       location = agent.choose_location(x , y, world.size)
       print(f"the next location chosen by the agent:{location}")
   except inference.GameOver as e:
-    print("RESULT_WIN: You have won!, RESULT_DEATH: You have died :(, RESULT_GIVE_UP: You have left the cave without finding the gold :(")
-    print(e.result)
+    resultList = {inference.RESULT_WIN: "You have won!",
+                  inference.RESULT_DEATH: "You have died :(",
+                  inference.RESULT_GIVE_UP: "You have left the cave without finding the gold :("}
+    print("\nGAME RESULT: ",resultList[e.result],"\n\n")
 
 def main(): 
   # Play a world with no Wumpus
