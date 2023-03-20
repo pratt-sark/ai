@@ -31,6 +31,7 @@ algorithm may not always give you the solution with all non-attacking positions)
 
 Enter the value of N: 8
 Initial Board:
+
 . . . . . . . .
 . . . . Q . . .
 . . . . . Q . .
