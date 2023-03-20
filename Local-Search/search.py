@@ -135,7 +135,9 @@ def hill_climbing(problem):
     stopping when no neighbor is better.
     """
     current = Node(problem.initial) # The initial node
+    path_cost = 0
     while True:
+        print(str(path_cost)+") Current Objective Function Value: ", problem.value(current.state))
         neighbors = current.expand(problem) # Get the neighbors
         if not neighbors: # If there are no neighbors
             break
@@ -145,7 +147,9 @@ def hill_climbing(problem):
         if problem.value(neighbor.state) <= problem.value(current.state): 
             break
         current = neighbor # Else, set the current node to the neighbor
+        path_cost +=1 # Increment the path cost
     # return current.state #Note: changed to return current node itself
+    current.path_cost = path_cost # Set the path cost
     return current # Return the node
 
   

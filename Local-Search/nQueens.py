@@ -36,7 +36,7 @@ class nQueens(Problem):
     def __init__(self, N):
         super().__init__(tuple(range(N))) 
         # The superclass initialization takes the initial state as input,
-        #  which is always a tuple of integers from 0 to N-1
+        # which is always a tuple of integers from 0 to N-1
         self.N = N
 
     # Define possible actions based on current state of the board
@@ -73,7 +73,7 @@ class nQueens(Problem):
         return -conflicts # Return the negative number of conflicts as the value of this state
 
 # Generate a random board of size N x N
-def random_board(N): 
+def random_board(N): # Note: Initially, there is only one queen in each column
     board = [] # Initialize an empty list to store the board
     for col in range(N): # Loop through each column
         row = random.randint(0, N - 1) # Generate a random row number for the queen in this column
@@ -102,9 +102,11 @@ if __name__ == '__main__':
     initial_node = Node(initial_board) # Initialize the initial node
     solution_node = hill_climbing(problem) # Solve the problem using hill-climbing
     if problem.value(solution_node.state) == 0: # If the value of the solution node is 0, we have found a solution
-        print("Solution found:")
+        print("\nSolution found:")
         print_board(solution_node.state) # Print the solution board
+        print("\nNumber of moves:", solution_node.path_cost) # Print the number of moves taken to reach the solution
     else: # Otherwise, we have found a local maximum
-        print("Local maxima found:")
+        print("\nLocal maxima found:")
         print_board(solution_node.state) # Print the local maximum board
         print("\nValue of objective function:", problem.value(solution_node.state)) # Print the value of the objective function at the local maximum
+        print("\nNumber of moves:", solution_node.path_cost) # Print the number of moves taken to reach the solution
