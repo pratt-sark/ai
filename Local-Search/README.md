@@ -33,12 +33,19 @@ Enter the value of N: 8
 Initial Board:
 
 . . . . . . . .
+
 . . . . Q . . .
+
 . . . . . Q . .
+
 . Q . . . . . .
+
 Q . . . . . Q .
+
 . . . Q . . . Q
+
 . . Q . . . . .
+
 . . . . . . . .
 
 0) Current Objective Function Value:  -28
