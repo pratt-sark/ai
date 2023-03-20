@@ -30,10 +30,7 @@ algorithm may not always give you the solution with all non-attacking positions)
 > Case 1: The program successfully finds the global optima 
 
 Enter the value of N: 8
-Initial Board:
-
-![image](https://user-images.githubusercontent.com/72748736/226473850-a2377c2f-3b5e-40d4-8cd5-3bde5de173e3.png)
-
+![image](https://user-images.githubusercontent.com/72748736/226474234-1d5bac5c-6594-4890-83d7-6f8f9088b6d3.png)
 
 0) Current Objective Function Value:  -28
 1) Current Objective Function Value:  -22
@@ -45,15 +42,7 @@ Initial Board:
 7) Current Objective Function Value:  -1
 8) Current Objective Function Value:  0
 
-Solution found:
-. . Q . . . . .
-. . . . . Q . .
-. . . . . . . Q
-. Q . . . . . .
-. . . Q . . . .
-Q . . . . . . .
-. . . . . . Q .
-. . . . Q . . .
+![image](https://user-images.githubusercontent.com/72748736/226473850-a2377c2f-3b5e-40d4-8cd5-3bde5de173e3.png)
 
 
 Number of moves: 8
@@ -63,15 +52,7 @@ Number of moves: 8
 > Case 2: The program cannot find the global optima and can't improve over a local optima
 
 Enter the value of N: 8
-Initial Board:
-. . . . . . . .
-. . . . Q Q . .
-. . . . . . . .
-. . . . . . . .
-. . . . . . . Q
-. Q . . . . Q .
-. . Q Q . . . .
-Q . . . . . . .
+![image](https://user-images.githubusercontent.com/72748736/226474421-65440f47-20ea-40fc-b39b-5a6f81439a94.png)
 
 0) Current Objective Function Value:  -28
 1) Current Objective Function Value:  -22
@@ -83,16 +64,7 @@ Q . . . . . . .
 7) Current Objective Function Value:  -2
 8) Current Objective Function Value:  -1
 
-Local maxima found:
-. . . . . . . Q
-. . . Q . . . .
-. Q . . . . . .
-. . . . . . . .
-. . Q . . Q . .
-Q . . . . . . .
-. . . . . . Q .
-. . . . Q . . .
-
+![image](https://user-images.githubusercontent.com/72748736/226474545-f48b369f-eae5-41fd-b7f4-3d211529b239.png)
 
 Value of objective function: -1
 
