@@ -32,21 +32,8 @@ algorithm may not always give you the solution with all non-attacking positions)
 Enter the value of N: 8
 Initial Board:
 
-. . . . . . . .
+![image](https://user-images.githubusercontent.com/72748736/226473850-a2377c2f-3b5e-40d4-8cd5-3bde5de173e3.png)
 
-. . . . Q . . .
-
-. . . . . Q . .
-
-. Q . . . . . .
-
-Q . . . . . Q .
-
-. . . Q . . . Q
-
-. . Q . . . . .
-
-. . . . . . . .
 
 0) Current Objective Function Value:  -28
 1) Current Objective Function Value:  -22
