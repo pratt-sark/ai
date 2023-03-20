@@ -19,7 +19,7 @@ algorithm may not always give you the solution with all non-attacking positions)
 
 * Objective Function taken: Maximize (negative(number_of_pairs_of_queens_that_attack_each_other)
 * Expected Objective Function Value for Global Optima = 0
-* Neighbour generation: For a particular column, move the queen to any row in the column other than the one it's currently in
+* Neighbour generation process: For a particular column, move the queen to any row in the column other than the one it's currently in
 
 ### Execution
 
@@ -27,7 +27,7 @@ algorithm may not always give you the solution with all non-attacking positions)
 2. Enter the value of 'N' when prompted to do so. Here, 'N' is the number of rows or the number of columns of the chessboard.
 3. The solution should appear on the console in the following format:
 
-* Case 1: The program successfully finds the global optima 
+> Case 1: The program successfully finds the global optima 
 
 Enter the value of N: 8
 Initial Board:
@@ -65,7 +65,7 @@ Number of moves: 8
 
 ----------------------------------------------
 
-* Case 2: The program cannot find the global optima and can't improve over a local optima
+> Case 2: The program cannot find the global optima and can't improve over a local optima
 
 Enter the value of N: 8
 Initial Board:

@@ -1,30 +1,4 @@
-# Given to you as attachments are two files - search.py and utils.py. 
-# In search.py, there is an implementation of an abstract class 'Problem' 
-# and an implementation of the class 'Node'. These classes provide generic 
-# interfaces to represent an AI search problem and a node in the search-space 
-# respectively. Additionally, the file also provides an implementation of the 
-# hill-climbing algorithm. The utils.py file implements a number of utility methods, 
-# some of which are used in search.py.
-
-# Your task in this assignment is to solve the N-Queens problem by reducing it to an 
-#optimization problem and solving the same using local search algorithm. In particular,
-# you have the following tasks:
-
-# 1. Implement a sub-class of 'Problem' (say nQueens), with concrete implementation(s) of the methods required.
-# 2. Modify the necessary methods in the Node class. Try minimal modification.
-# 3. Modify/Use the hill-climbing algorithm to solve the N-queens problem.
-
-# To test your code, write a main method which takes 'N' from the user and 
-# creates a random initial N by N board, where each row (or column) of the 
-# board contains exactly one queen. However, this initial random board may 
-# not be a solution (all non-attacking placements). 
-
-# Solve the problem by local search calling appropriate method and print  
-# the best solution (the N by N board) found by the local search algorithm 
-# (Note that the algorithm may not always give you the solution with all 
-# non-attacking positions). Print the number of moves taken by the local 
-# search algorithm and also the successive objection function values as
-# the algorithm progresses from the initial random board to the final solution board.
+# Solve the N-Queens problem by reducing it to an optimization problem and solving the same using local search algorithm.
 
 from search import *
 from utils import *
