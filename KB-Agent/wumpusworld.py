@@ -1,4 +1,3 @@
-
 # This module should implement a logical agent and a world for it to explore.
 
 import logic
@@ -71,7 +70,7 @@ class WumpusWorldAgent(inference.KnowledgeBasedAgent):
     not_unsafe_set = set([])
     for i in range(1, self.size + 1):
       for j in range(1, self.size + 1):
-        if logic.resolution(self.KB, logic.expr('~W%d_%d' % (i,j))) and logic.resolution(self.KB, logic.expr('~P%d_%d' % (i,j))):
+        if inference.resolution(self.KB, logic.expr('~W%d_%d' % (i,j))) and inference.resolution(self.KB, logic.expr('~P%d_%d' % (i,j))):
           not_unsafe_set.add((i,j))
     return not_unsafe_set
 
@@ -158,7 +157,7 @@ def main():
   # Play a world with no Wumpus
   play(World(4, (2, 3), ((3, 1), (3, 3), (4, 4)), (-1, -1)))
 
-  # Play a world with a Wumpus
+  # # Play a world with a Wumpus
   play(World(4, (2, 3), ((3, 1), (3, 3), (4, 4)), (1, 3)))
   # Feel free to make up additional worlds and see how your agent does at exploring them!
 
