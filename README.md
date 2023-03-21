@@ -1,7 +1,12 @@
 # ai
 ### Artificial Intelligence Lab Codes
 
-All codes are in Jupyter Notebook format, coded in Python. Just download them and run them using Google Colab or VSCode. 
+For codes that are in Jupyter Notebook format (coded in Python):
+ * Just download them and run them using Google Colab or VSCode. 
+
+For codes that are in .py format (coded in Python):
+ * Just download them and run them using VSCode. 
+
 No specific inputs required except the obvious ones communicated using input prompts.
 
 #### Uninformed Search
@@ -44,3 +49,11 @@ No specific inputs required except the obvious ones communicated using input pro
   state along with the corresponding action sequence (initial-board – up – next-board – down – next
   board – ... – right – goal-board)
   </details>
+
+#### Knowledge Based Agents
+
+* Wumpus World Problem
+
+#### Local Search & Optimization
+
+* nQueens Problem
