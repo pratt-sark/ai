@@ -1,10 +1,10 @@
-# 15-puzzle problem
+# n-puzzle problem
 # As an input, you will be given an initial and a goal board configuration and your task is to find a sequence of moves that takes the initial board configuration to the goal board configuration.
 
 # The problem formulation in terms of the state-space is as follows:
 
-# States: Any arrangement of numbers 1-15 on the board together with a blank cell is a state.
-# Initial State: A random placement of numbers 1-15 and the blank in the 16 cells of the board.
+# States: Any arrangement of numbers 1-(n*n-1) on the board together with a blank cell is a state.
+# Initial State: A random placement of numbers 1-(n*n-1) and the blank in the 16 cells of the board.
 # Actions: up,down,left,right. The respective action swaps the number to the up,down,left,right of the blank cell with the blank cell.
 # Transition Model: Returns the new board after an application of the action.
 # Goal test: Whether the current state matches with the goal configuration.
@@ -21,15 +21,22 @@ open = [] #list of all open nodes
 closed = [] #list of all closed nodes
 #------------------------------------------------------------------
 
+# Take the value of n from the user 
+# Note: User will enter 15, we will convert it to 4. 
+# Similarly, user will enter 8, we will convert it to 3.
+n = (int)(input("\nEnter the value of n (Eg: For 15 puzzle, enter 15): "))
+n = (int)(np.sqrt(n+1)) #calculate the value of actual n (Eg: For 15 puzzle, n=4)
+#------------------------------------------------------------------
+
 def board_init(board): #initialise the board with user input
-  for i in range(4): 
+  for i in range(n): 
     print('Row ',i,':') 
     board[i] = np.array([int(x) for x in input().split()]) 
   # print("The Board is intialised as ---->\n",board)
   return board
 
 def make_board(): #make the board
-  board = np.zeros((4,4),dtype=int) #initialise the board with zeros
+  board = np.zeros((n,n),dtype=int) #initialise the board with zeros
   board = board_init(board) #initialise the board
   return board 
 #--------------------------------------------------------------------------
@@ -44,7 +51,7 @@ def move_left(board): #move the blank left
 
 def move_right(board): #move the blank right
   row,col = (int)(np.where(board==0)[0]),(int)(np.where(board==0)[1]) #find the position of the blank
-  if col!=3: #if the blank is not in the rightmost column
+  if col!=(n-1): #if the blank is not in the rightmost column
     board[row][col] = board[row][col+1] #swap the blank with the number to the right
     board[row][col+1] = 0 #make the position of the number to the right as blank
     # print("Right Move DONE.")
@@ -60,7 +67,7 @@ def move_up(board): #move the blank up
 
 def move_down(board): #move the blank down
   row,col = (int)(np.where(board==0)[0]),(int)(np.where(board==0)[1]) #find the position of the blank
-  if row!=3: #if the blank is not in the bottommost row
+  if row!=(n-1): #if the blank is not in the bottommost row
     board[row][col] = board[row+1][col] #swap the blank with the number below
     board[row+1][col] = 0 #make the position of the number below as blank
     # print("Down Move DONE.")
@@ -134,8 +141,8 @@ class State: #class to represent the state of the board
 #--------------------------------------------------------------------------
 
 def goalTest(initBoard,goalBoard): #check if the board is the goal board
-  for i in range(4): #for each row
-    for j in range(4): #for each column
+  for i in range(n): #for each row
+    for j in range(n): #for each column
       if initBoard[i][j] != goalBoard[i][j]: #if the element is not equal to the goal element
         return False 
   return True #return true if the board is the goal board
@@ -177,14 +184,15 @@ g = State(make_board())
 print('\n-----------SOLUTION STARTS HERE-----------')
 
 print('\nInitial Board:')
+# For n=4
 # s= State(np.array([[1,2,3,4],[5,0,6,7],[8,9,10,11],[12,13,14,15]]))
 # s= State(np.array([[1,2,3,4],[5,0,6,7],[8,9,10,11],[12,13,14,15]]))
 print(s.board)
 
 print('\nGoal Board:')
-#Solvable instance
+#Solvable instance (for n=4)
 # g = State(np.array([[1,2,3,4],[5,9,6,7],[8,13,10,11],[0,12,14,15]]))
-#Not solvable instance
+#Not solvable instance (for n=4)
 # g = State(np.array([[3,9,1,15],[14,11,4,6],[13,0,10,12],[2,7,8,5]]))
 print(g.board)
 
