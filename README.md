@@ -1,10 +1,10 @@
 # ai
-### Artificial Intelligence Lab Codes
+## Artificial Intelligence Lab Codes
 
-For codes that are in Jupyter Notebook format (coded in Python):
+> For codes that are in Jupyter Notebook format (coded in Python):
  * Just download them and run them using Google Colab or VSCode. 
 
-For codes that are in .py format (coded in Python):
+> For codes that are in .py format (coded in Python):
  * Just download them and run them using VSCode. 
 
 No specific inputs required except the obvious ones communicated using input prompts.
