@@ -87,16 +87,16 @@ class Node:
     def __lt__(self, node):
         return self.state < node.state
 
-    def expand(self, problem):
+    def expand(self, problem): # Get the neighbors of the current node
         """List the nodes reachable in one step from this node."""
-        return [self.child_node(problem, action)
-                for action in problem.actions(self.state)]
+        return [self.child_node(problem, action) 
+                for action in problem.actions(self.state)] # Get the neighbors
 
-    def child_node(self, problem, action):
+    def child_node(self, problem, action): 
         """[Figure 3.10]"""
-        next_state = problem.result(self.state, action)
-        next_node = Node(next_state, self, action, problem.path_cost(self.path_cost, self.state, action, next_state))
-        return next_node
+        next_state = problem.result(self.state, action) # Get the next state
+        next_node = Node(next_state, self, action, problem.path_cost(self.path_cost, self.state, action, next_state)) # Create the next node
+        return next_node # Return the next node
 
     def solution(self):
         """Return the sequence of actions to go from the root to this node."""
