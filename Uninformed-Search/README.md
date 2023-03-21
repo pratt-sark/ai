@@ -1,5 +1,14 @@
 ## Instruction to run the codes
 
+#### N puzzle problem:
+
+1. Run the file nPuzzle.py
+2. Enter the value of n (Enter 8 for 8-puzzle, 15 for 15-puzzle, etc.)
+
+![image](https://user-images.githubusercontent.com/72748736/226721037-9522ab7d-fada-43fd-9350-f282ba75d263.png)
+
+3. For expected results, see 15 puzzle problem outputs below.
+
 #### 15 puzzle problem:
 1. Run the file 15puzzle.py
 2. Enter the initial state matrix and the final state matrix row-wise, separated by spaces. Enter 0 for the blank space. Here's a screenshot of the console for reference:
