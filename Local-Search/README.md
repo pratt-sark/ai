@@ -20,7 +20,8 @@ algorithm may not always give you the solution with all non-attacking positions)
 * Objective Function taken: 
 > Maximize (negative(number_of_pairs_of_queens_that_attack_each_other)
 * Expected Objective Function Value for Global Optima = 0
-* Neighbour generation process: For a particular column, move the queen to any row in the column other than the one it's currently in
+* Neighbour generation process: 
+> For a particular column, move the queen to any row in the column other than the one it's currently in
 
 ### Execution
 
