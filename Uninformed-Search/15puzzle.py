@@ -24,8 +24,7 @@ closed = [] #list of all closed nodes
 def board_init(board): #initialise the board with user input
   for i in range(4): 
     print('Row ',i,':') 
-    for j in range(4): 
-      board[i][j]=int(input()) 
+    board[i] = np.array([int(x) for x in input().split()]) 
   # print("The Board is intialised as ---->\n",board)
   return board
 
@@ -124,6 +123,7 @@ class State: #class to represent the state of the board
     self.right.parent = self 
     self.up.parent = self
     self.down.parent = self
+    #--------------------------------
     self.left.prev_move = 'Left' #set the previous move of the left successor
     self.right.prev_move = 'Right' #set the previous move of the right successor
     self.up.prev_move = 'Up' #set the previous move of the up successor
@@ -169,18 +169,21 @@ def GraphSearch(state,g):
 
 #Execution starts here
 
-# s = State(make_board())
-# g = State(make_board())
+print('Enter the initial board:')
+s = State(make_board())
+print('\nEnter the goal board:')
+g = State(make_board())
+
+print('\n-----------SOLUTION STARTS HERE-----------')
 
 print('\nInitial Board:')
 # s= State(np.array([[1,2,3,4],[5,0,6,7],[8,9,10,11],[12,13,14,15]]))
-s= State(np.array([[1,2,3,4],[5,0,6,7],[8,9,10,11],[12,13,14,15]]))
+# s= State(np.array([[1,2,3,4],[5,0,6,7],[8,9,10,11],[12,13,14,15]]))
 print(s.board)
 
 print('\nGoal Board:')
 #Solvable instance
-g = State(np.array([[1,2,3,4],[5,9,6,7],[8,13,10,11],[0,12,14,15]]))
-
+# g = State(np.array([[1,2,3,4],[5,9,6,7],[8,13,10,11],[0,12,14,15]]))
 #Not solvable instance
 # g = State(np.array([[3,9,1,15],[14,11,4,6],[13,0,10,12],[2,7,8,5]]))
 print(g.board)
