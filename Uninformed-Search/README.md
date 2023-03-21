@@ -10,7 +10,7 @@
 
 ![image](https://user-images.githubusercontent.com/72748736/226712639-a780774e-4045-41a6-a982-b5e1c7c86651.png)
 
-![image](https://user-images.githubusercontent.com/72748736/226712721-6132ca05-bbf6-4193-a078-06528c227f19.png)
+![image](https://user-images.githubusercontent.com/72748736/226713507-ad43232a-12aa-4ad3-8166-2d6267fc0656.png)
 
 4. For an unsolvable problem, however the output should look like this:
 
