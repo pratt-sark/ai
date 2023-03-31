@@ -238,6 +238,8 @@ print(g.board)
 
 if (solvable(s.board,g.board)): #if the board is solvable
     print("\nFor given pair of Initial and Goal State, the problem is Solvable!")
+    print("\nPlease wait while the I find the solution path...")
+    print("\n\nThis may take a while...\n")
     found = GraphSearch(s,g)
     if found: #if the goal is found
         moves = [m for m in moves if m is not None] # remove the None moves
