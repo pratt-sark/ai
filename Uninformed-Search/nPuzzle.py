@@ -85,7 +85,7 @@ def calc_inversions(board): #calculate the number of inversions
   boardlist.remove(0) #remove the blank from the list
   # print(board_as_list)
   for i in range(len(boardlist)-1): #for each element in the list
-    for j in range(len(boardlist)): #for each element in the list
+    for j in range(i+1,len(boardlist)): #for each element in the list
       if boardlist[i]>boardlist[j]: #if the element is greater than the other element
         count+=1 #increment the count
   return count #return the count
