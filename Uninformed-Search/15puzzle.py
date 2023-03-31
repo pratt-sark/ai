@@ -248,5 +248,6 @@ if (solvable(s.board,g.board)): #if the board is solvable
             print(p.board) #print the board
             print("\n"+str(m)) #print the move
             print("\n") #print a new line
+        print("\nTotal number of moves = ",len(moves)-1) #print the total number of moves
 else: #if the board is not solvable
     print("\nNot Solvable :(")
