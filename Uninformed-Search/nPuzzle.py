@@ -13,6 +13,7 @@
 
 import numpy as np 
 import random
+import sys
 
 # ----------------Global variables---------------------------------
 path = [] #initialise the path
@@ -74,6 +75,29 @@ def move_down(board): #move the blank down
     return board
 #--------------------------------------------------------------------------
 
+def no_of_misplaced_tiles(board,goal_board): #calculate the number of misplaced tiles
+  count=0 #initialise the count to zero
+  for i in range(n): #for each row
+    for j in range(n): #for each column
+      if board[i][j]!=goal_board[i][j]: #if the number in the board is not equal to the number in the goal board
+        count+=1 #increment the count
+  return count #return the count
+#--------------------------------------------------------------------------
+
+def manhattan_distance(board,goal_board): #calculate the manhattan distance
+  count=0 #initialise the count to zero
+  for i in range(n): #for each row
+    for j in range(n): #for each column
+      if board[i][j]!=goal_board[i][j]: #if the number in the board is not equal to the number in the goal board
+        row,col = (int)(np.where(goal_board==board[i][j])[0]),(int)(np.where(goal_board==board[i][j])[1]) #find the position of the number in the goal board
+        count += abs(row-i) + abs(col-j) #calculate the manhattan distance
+  return count #return the count
+#--------------------------------------------------------------------------
+
+def h(board,goal_board): #calculate the heuristic value
+  return manhattan_distance(board,goal_board) #return the manhattan distance
+#--------------------------------------------------------------------------
+
 def row_number_of_blank(board): #find the row number of the blank
   row = np.where(board==0)[0] #find the row number of the blank
   return (int)(row) #return the row number of the blank
@@ -118,6 +142,7 @@ class State: #class to represent the state of the board
   left = right = up = down = parent = None #initialise the instance variables
   board = 0 #initialise the board
   prev_move = None #initialise the previous move
+  h = 0 #initialise the heuristic value
   def __init__(self,board): #initialise the state
     self.board = board #set the board
   def gen_successors(self): #generate the successors
@@ -148,11 +173,30 @@ def goalTest(initBoard,goalBoard): #check if the board is the goal board
   return True #return true if the board is the goal board
 #--------------------------------------------------------------------------
 
+def obj_notin_list(obj,list): #check if the object is not in the list
+  for i in list: #for each element in the list
+    if np.array_equal(i.board,obj.board): #if the board is equal to the board of the element
+      return False #return false
+  return True #return true if the object is not in the list
+#--------------------------------------------------------------------------
+
 def GraphSearch(state,g):
     global open , closed, movesAndPath
     open.append(state) #initialise the open list with the initial state
     while open: #while the open list is not empty
-        s = open.pop(0) #pop the first element from the open list
+        # print("\nIteration ",len(open))
+
+        # s = open.pop(0) #pop the first element from the open list
+        min = sys.maxsize #initialise the minimum value to -1
+        s = None #initialise the state to None
+        for op in open.copy():
+          if h(op.board,g.board) < min:
+            # print("h = ",h(op.board,g.board))
+            min = h(op.board,g.board)
+            s = op
+        # print("Min h found = ",min)
+        # print("State with min h = ",s.board)
+        open.remove(s) #remove the state from the open list
         if goalTest(s.board,g.board): #if the state is the goal state
             print("\nGoal Found!")
             print("\nPath:")
@@ -167,9 +211,9 @@ def GraphSearch(state,g):
         else: #if the state is not the goal state
             closed.append(s) #append the state to the closed list
             succ_list = s.gen_successors() #generate the successors of the state
+            # random.shuffle(succ_list)
             for i in succ_list: #for each successor
-                if i not in closed: #if the successor is not in the closed list
-                    i.parent = s #set the parent of the successor to the state
+                if obj_notin_list(i,closed) and obj_notin_list(i,open): #if the successor is not in the closed list
                     open.append(i) #append the successor to the open list
     return False #return false if the goal is not found
 #--------------------------------------------------------------------------
@@ -185,15 +229,15 @@ print('\n-----------SOLUTION STARTS HERE-----------')
 
 print('\nInitial Board:')
 # For n=4
-# s= State(np.array([[1,2,3,4],[5,0,6,7],[8,9,10,11],[12,13,14,15]]))
+# s= State(np.array([[2,3,6,4],[1,5,0,7],[10,11,12,8],[9,13,14,15]]))
 # s= State(np.array([[1,2,3,4],[5,0,6,7],[8,9,10,11],[12,13,14,15]]))
 print(s.board)
 
 print('\nGoal Board:')
 #Solvable instance (for n=4)
-# g = State(np.array([[1,2,3,4],[5,9,6,7],[8,13,10,11],[0,12,14,15]]))
+# g = State(np.array([[1,2,3,4],[5,6,7,8],[9,10,11,12],[13,14,15,0]]))
 #Not solvable instance (for n=4)
-# g = State(np.array([[3,9,1,15],[14,11,4,6],[13,0,10,12],[2,7,8,5]]))
+# g = State(np.array([[2,3,0,4],[1,5,6,7],[10,11,12,8],[9,13,14,15]]))
 print(g.board)
 
 if (solvable(s.board,g.board)): #if the board is solvable
