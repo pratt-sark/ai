@@ -1,5 +1,4 @@
-# ai
-## Artificial Intelligence Lab Codes
+# Artificial Intelligence Lab Codes
 
 #### Execution Instructions
 
