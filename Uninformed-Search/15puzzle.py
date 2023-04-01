@@ -11,6 +11,7 @@
 
 # Implement the graph search algorithm to print a path from the initial state leading to the goal state along with the corresponding action sequence (initial-board – up – next-board – down – next board – ... – right – goal-board)
 
+from collections import defaultdict
 import numpy as np 
 import random
 import sys
@@ -22,7 +23,7 @@ open = [] #list of all open nodes
 closed = [] #list of all closed nodes
 #------------------------------------------------------------------
 
-n=4 #size of the board
+n = 4 #size of the board
 #------------------------------------------------------------------
 
 def board_init(board): #initialise the board with user input
@@ -177,10 +178,11 @@ def obj_notin_list(obj,list): #check if the object is not in the list
 #--------------------------------------------------------------------------
 
 def GraphSearch(state,g):
-    global open , closed, movesAndPath
+    global open , movesAndPath
+    closed = defaultdict(list) # initialize the closed list as an empty dictionary
+    openBool = defaultdict(list) # initialize the open list as an empty dictionary
     open.append(state) #initialise the open list with the initial state
     while open: #while the open list is not empty
-        # print("\nIteration ",len(open))
 
         # s = open.pop(0) #pop the first element from the open list
         min = sys.maxsize #initialise the minimum value to -1
@@ -205,11 +207,11 @@ def GraphSearch(state,g):
             moves.reverse() #reverse the moves list
             return True #return true
         else: #if the state is not the goal state
-            closed.append(s) #append the state to the closed list
+            closed[str(s.board)] = True # add the state to the closed dictionary
             succ_list = s.gen_successors() #generate the successors of the state
             # random.shuffle(succ_list)
             for i in succ_list: #for each successor
-                if obj_notin_list(i,closed) and obj_notin_list(i,open): #if the successor is not in the closed list
+                if (not closed[str(i.board)]) and (not openBool[str(i.board)]): #if the successor is not in the closed list
                     open.append(i) #append the successor to the open list
     return False #return false if the goal is not found
 #--------------------------------------------------------------------------

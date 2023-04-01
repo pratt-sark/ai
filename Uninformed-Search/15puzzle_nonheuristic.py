@@ -1,10 +1,10 @@
-# n-puzzle problem
+# 15-puzzle problem
 # As an input, you will be given an initial and a goal board configuration and your task is to find a sequence of moves that takes the initial board configuration to the goal board configuration.
 
 # The problem formulation in terms of the state-space is as follows:
 
-# States: Any arrangement of numbers 1-(n*n-1) on the board together with a blank cell is a state.
-# Initial State: A random placement of numbers 1-(n*n-1) and the blank in the 16 cells of the board.
+# States: Any arrangement of numbers 1-15 on the board together with a blank cell is a state.
+# Initial State: A random placement of numbers 1-15 and the blank in the 16 cells of the board.
 # Actions: up,down,left,right. The respective action swaps the number to the up,down,left,right of the blank cell with the blank cell.
 # Transition Model: Returns the new board after an application of the action.
 # Goal test: Whether the current state matches with the goal configuration.
@@ -20,7 +20,6 @@ import sys
 path = [] #initialise the path
 moves = [] #initialise the moves list
 open = [] #list of all open nodes
-closed = [] #list of all closed nodes
 #------------------------------------------------------------------
 
 # Take the value of n from the user 
@@ -74,29 +73,6 @@ def move_down(board): #move the blank down
     board[row+1][col] = 0 #make the position of the number below as blank
     # print("Down Move DONE.")
     return board
-#--------------------------------------------------------------------------
-
-def no_of_misplaced_tiles(board,goal_board): #calculate the number of misplaced tiles
-  count=0 #initialise the count to zero
-  for i in range(n): #for each row
-    for j in range(n): #for each column
-      if board[i][j]!=goal_board[i][j]: #if the number in the board is not equal to the number in the goal board
-        count+=1 #increment the count
-  return count #return the count
-#--------------------------------------------------------------------------
-
-def manhattan_distance(board,goal_board): #calculate the manhattan distance
-  count=0 #initialise the count to zero
-  for i in range(n): #for each row
-    for j in range(n): #for each column
-      if board[i][j]!=goal_board[i][j]: #if the number in the board is not equal to the number in the goal board
-        row,col = (int)(np.where(goal_board==board[i][j])[0]),(int)(np.where(goal_board==board[i][j])[1]) #find the position of the number in the goal board
-        count += abs(row-i) + abs(col-j) #calculate the manhattan distance
-  return count #return the count
-#--------------------------------------------------------------------------
-
-def h(board,goal_board): #calculate the heuristic value
-  return manhattan_distance(board,goal_board) #return the manhattan distance
 #--------------------------------------------------------------------------
 
 def row_number_of_blank(board): #find the row number of the blank
@@ -187,22 +163,11 @@ def GraphSearch(state,g):
     openBool = defaultdict(list) # initialize the open list as an empty dictionary
     open.append(state) #initialise the open list with the initial state
     while open: #while the open list is not empty
-
-        # s = open.pop(0) #pop the first element from the open list
-        min = sys.maxsize #initialise the minimum value to -1
-        s = None #initialise the state to None
-        for op in open.copy():
-          if h(op.board,g.board) < min:
-            # print("h = ",h(op.board,g.board))
-            min = h(op.board,g.board)
-            s = op
-        # print("Min h found = ",min)
-        # print("State with min h = ",s.board)
-        open.remove(s) #remove the state from the open list
+        
+        s = open.pop(0) #pop the first element from the open list
         if goalTest(s.board,g.board): #if the state is the goal state
             print("\nGoal Found!")
             print("\nPath:")
-            
             while s: #while the state is not None
                 path.append(s) #append the state to the path
                 moves.append(s.prev_move) #append the previous move to the moves list
@@ -215,7 +180,19 @@ def GraphSearch(state,g):
             succ_list = s.gen_successors() #generate the successors of the state
             # random.shuffle(succ_list)
             for i in succ_list: #for each successor
-                if (not closed[str(i.board)]) and (not openBool[str(i.board)]): #if the successor is not in the closed list
+                if(goalTest(i.board,g.board)):
+                    print("\nGoal Found!")
+                    print("\nPath:")
+                    while i: #while the state is not None
+                        path.append(i) #append the state to the path
+                        moves.append(i.prev_move) #append the previous move to the moves list
+                        i = i.parent #set the state to the parent of the state
+                    path.reverse() #reverse the path
+                    moves.reverse() #reverse the moves list
+                    return True #return true
+
+                if (not closed[str(i.board)]) and (not openBool[str(i.board)]): #if the successor is not in the closed and open list
+                    i.parent = s #set the parent of the successor to the state
                     open.append(i) #append the successor to the open list
     return False #return false if the goal is not found
 #--------------------------------------------------------------------------
@@ -233,11 +210,13 @@ print('\nInitial Board:')
 # For n=4
 # s= State(np.array([[2,3,6,4],[1,5,0,7],[10,11,12,8],[9,13,14,15]]))
 # s= State(np.array([[1,2,3,4],[5,0,6,7],[8,9,10,11],[12,13,14,15]]))
+# s = State(np.array([[1,2,3,4],[5,6,7,8],[9,10,11,12],[13,14,15,0]]))
 print(s.board)
 
 print('\nGoal Board:')
 #Solvable instance (for n=4)
 # g = State(np.array([[1,2,3,4],[5,6,7,8],[9,10,11,12],[13,14,15,0]]))
+# g = State(np.array([[1,9,2,3],[5,12,11,10],[13,6,0,8],[7,14,15,4]]))
 #Not solvable instance (for n=4)
 # g = State(np.array([[2,3,0,4],[1,5,6,7],[10,11,12,8],[9,13,14,15]]))
 print(g.board)
@@ -254,6 +233,6 @@ if (solvable(s.board,g.board)): #if the board is solvable
             print(p.board) #print the board
             print("\n"+str(m)) #print the move
             print("\n") #print a new line
-        print("\nTotal number of moves = ",len(moves)-1) #print the total number of moves
+        print("No of moves: "+str(len(moves)-1)) #print the number of moves
 else: #if the board is not solvable
     print("\nNot Solvable :(")

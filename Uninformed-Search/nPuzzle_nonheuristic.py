@@ -20,7 +20,6 @@ import sys
 path = [] #initialise the path
 moves = [] #initialise the moves list
 open = [] #list of all open nodes
-closed = [] #list of all closed nodes
 #------------------------------------------------------------------
 
 # Take the value of n from the user 
@@ -192,7 +191,7 @@ def GraphSearch(state,g):
                     moves.reverse() #reverse the moves list
                     return True #return true
 
-                if (not closed[str(i.board)]) and (not openBool[str(i.board)]): #if the successor is not in the closed list
+                if (not closed[str(i.board)]) and (not openBool[str(i.board)]): #if the successor is not in the closed and open list
                     i.parent = s #set the parent of the successor to the state
                     open.append(i) #append the successor to the open list
     return False #return false if the goal is not found
