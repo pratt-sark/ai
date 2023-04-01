@@ -1,4 +1,26 @@
+# Uninformed Search
+
+## File Description
+
+#### N-Queens problem:
+* *nQueens_TreeSeach.ipynb* - Code for n-queens problem (Tree Search)
+* *8Queens_TreeSeach.ipynb* - Code for 8-queens problem (Tree Search)
+* _nQueens.ipynb_ - Code for n-queens problem (Not Tree Search)
+* _8Queens.ipynb_ - Code for 8-queens problem (Not Tree Search)
+
+#### N puzzle problem:
+* _nPuzzle.py_ - Code for n-puzzle problem with Manhattan distance heuristic
+* _15puzzle.py_ - Code for 15-puzzle problem with Manhattan distance heuristic
+* _nPuzzle_nonheuristic.py_ - Code for n-puzzle problem without heuristic
+* _15puzzle_nonheuristic.py_ - Code for 15-puzzle problem without heuristic
+
 ## Instruction to run the codes
+
+#### N-Queens problem:
+
+1. Run the file nQueens_TreeSeach.ipynb
+2. Enter the value of n (Enter 8 for 8-queens, 15 for 15-queens, etc.)
+3. One of the possible solutions will be printed, along with the number of possible solutions and number of non-attacking states.
 
 #### N puzzle problem:
 
