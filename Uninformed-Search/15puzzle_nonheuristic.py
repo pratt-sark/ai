@@ -22,11 +22,7 @@ moves = [] #initialise the moves list
 open = [] #list of all open nodes
 #------------------------------------------------------------------
 
-# Take the value of n from the user 
-# Note: User will enter 15, we will convert it to 4. 
-# Similarly, user will enter 8, we will convert it to 3.
-n = (int)(input("\nEnter the value of n (Eg: For 15 puzzle, enter 15): "))
-n = (int)(np.sqrt(n+1)) #calculate the value of actual n (Eg: For 15 puzzle, n=4)
+n = 4 #size of the board
 #------------------------------------------------------------------
 
 def board_init(board): #initialise the board with user input
