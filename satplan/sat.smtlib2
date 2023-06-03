@@ -1,0 +1,64 @@
+;The robot can move to one of its its neighbour cells (up, down, left, right) in each step.
+;There are obstacles in some of the cells of the maze, where the robot cannot enter. 
+;These obstacles are present in the cells [2,2], [3,3] , [3,4] and [4,1] 
+;(the first number reads the column and the second reads the row. 
+;[1,1] is the bottom left corner of the maze). 
+
+;The path plan should consider the basic assumptions like the robot cannot be in more than 
+;one cell at a time, it cannot pass via obstacles and it must move to reach the destination
+;and must move in single steps.
+
+;SMTLIB2 encoding of the problem:
+
+; Required variables
+(declare-const robotPosX Int)  ; X-coordinate of the robot's position
+(declare-const robotPosY Int)  ; Y-coordinate of the robot's position
+
+; Action variables
+(declare-const moveUp Bool)    ; Move the robot up
+(declare-const moveDown Bool)  ; Move the robot down
+(declare-const moveLeft Bool)  ; Move the robot left
+(declare-const moveRight Bool) ; Move the robot right
+
+; Action preconditions
+(define-fun canMoveUp () Bool (not (= robotPosY 1)))
+(define-fun canMoveDown () Bool (not (= robotPosY 5)))
+(define-fun canMoveLeft () Bool (not (= robotPosX 1)))
+(define-fun canMoveRight () Bool (not (= robotPosX 5)))
+
+; State variable preconditions
+(define-fun obstaclePresent () Bool (or (and (= robotPosX 2) (= robotPosY 2))
+                                        (and (= robotPosX 3) (= robotPosY 3))
+                                        (and (= robotPosX 3) (= robotPosY 4))
+                                        (and (= robotPosX 4) (= robotPosY 1))))
+
+
+; Transition model on applying actions
+(define-fun transitionModel () Bool (or (and moveUp (canMoveUp) (= robotPosY (- robotPosY 1))))
+                                      (and moveDown (canMoveDown) (= robotPosY (+ robotPosY 1))))
+                                      (and moveLeft (canMoveLeft) (= robotPosX (- robotPosX 1)))
+                                      (and moveRight (canMoveRight) (= robotPosX (+ robotPosX 1)))
+
+; Transition axioms of state variables
+(assert transitionModel)
+
+; Constraints to apply at least one action at each step
+(assert (or moveUp moveDown moveLeft moveRight))
+
+; Constraints to exclusively apply one action at each time step
+(assert (or (not moveUp (not moveDown) (not moveLeft) (not moveRight))
+            (not moveDown (not moveUp) (not moveLeft) (not moveRight))
+            (not moveLeft (not moveUp) (not moveDown) (not moveRight))
+            (not moveRight (not moveUp) (not moveDown) (not moveLeft))))
+
+; Initial state
+(assert (and (= robotPosX 1) (= robotPosY 1)))  ; Starting position at [1,1]
+
+; Goal state
+(assert (and (= robotPosX 4) (= robotPosY 4)))  ; Goal position at [4,4]
+
+; Solve the problem
+(check-sat)  ; Check if a satisfying assignment exists
+
+; Get the solution
+(get-model)  ; Retrieve the model
