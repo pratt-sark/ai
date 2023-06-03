@@ -10,6 +10,8 @@
 
 ;SMTLIB2 encoding of the problem:
 
+(set-logic QF_UF)
+
 ; Required variables
 (declare-const robotPosX Int)  ; X-coordinate of the robot's position
 (declare-const robotPosY Int)  ; Y-coordinate of the robot's position
