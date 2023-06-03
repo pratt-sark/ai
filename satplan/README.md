@@ -10,4 +10,4 @@ The path plan should consider the basic assumptions like the robot cannot be in 
 
 Run the code here: https://compsys-tools.ens-lyon.fr/z3/index.php
 
-Note: Couldn't solve the problem. Tried to encode the problem, but couldn't implement time steps. 
+Note: Couldn't solve the problem. Tried to encode the problem, but couldn't implement time steps. This is all I have to show for.
