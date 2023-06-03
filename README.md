@@ -59,7 +59,7 @@ No specific inputs required except the obvious ones communicated using input pro
 
 * nQueens Problem
 
-#### SATPlAN
+#### SATPLAN
 
 * Robot Path Finding
 
