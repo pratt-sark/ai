@@ -58,3 +58,11 @@ No specific inputs required except the obvious ones communicated using input pro
 #### Local Search & Optimization
 
 * nQueens Problem
+
+#### SATPlAN
+
+* Robot Path Finding
+
+#### Search
+
+* String Mapping
